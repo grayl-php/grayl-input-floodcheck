@@ -14,6 +14,7 @@
     }
   ],
   "type": "library",
+  "version": "1.0.1",
   "require": {
     "grayl/database-main": "^1",
     "grayl/date": "^1",
