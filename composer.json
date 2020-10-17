@@ -1,0 +1,38 @@
+{
+  "name": "grayl/input-floodcheck",
+  "description": "Class for working with form submission floods",
+  "keywords": [
+    "grayl"
+  ],
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Grogwood LLC",
+      "email": "dev@grogwood.com",
+      "homepage": "http://grogwood.com",
+      "role": "Developer"
+    }
+  ],
+  "type": "library",
+  "require": {
+    "grayl/database-main": "^1",
+    "grayl/date": "^1",
+    "grayl/mixin-common": "^1",
+    "php": "~7.4",
+    "ext-openssl": "*"
+  },
+  "require-dev": {
+    "grayl/gateway-pdo": "^1",
+    "phpunit/phpunit": "^9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grayl\\Input\\Floodcheck\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Grayl\\Test\\Input\\Floodcheck\\": "tests/"
+    }
+  }
+}
