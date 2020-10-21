@@ -52,7 +52,8 @@
                                           $max_attempts,
                                           new FloodcheckService(),
                                           new FloodcheckDatabaseMapper( 'input_floodcheck',
-                                                                        DatabasePorter::getInstance() ) );
+                                                                        DatabasePorter::getInstance(),
+                                                                        DatePorter::getInstance() ) );
       }
 
    }
