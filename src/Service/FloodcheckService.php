@@ -14,25 +14,17 @@
    {
 
       /**
-       * Returns a DateController object for when to stop considering records
+       * Subtracts a log TTl (DateInterval) from a DateController to get an expiration date
        *
        * @param DateController $now     A DateController for the current time
-       * @param \DateInterval  $log_ttl The amount of time that existing logs for this tag are valid, specified as a DateInterval
-       *
-       * @return DateController
+       * @param \DateInterval  $log_ttl The amount of time this log is valid, specified as a DateInterval
        */
-      public function getFloodcheckLogCutoffDate ( DateController $now,
-                                                   \DateInterval $log_ttl ): DateController
+      public function setFloodcheckLogExpirationDate ( DateController $now,
+                                                       \DateInterval $log_ttl ): void
       {
 
-         // Create a clone of the object we were passed
-         $cutoff = clone $now;
-
-         // Subtract the purge interval from the current time
-         $cutoff->subtractDateIntervalFromDateTime( $log_ttl );
-
-         // Return it
-         return $cutoff;
+         // Subtract the ttl interval from the current time
+         $now->addDateIntervalToDateTime( $log_ttl );
       }
 
    }

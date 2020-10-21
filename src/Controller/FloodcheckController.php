@@ -27,7 +27,7 @@
        *
        * @var \DateInterval
        */
-      private \DateInterval $floodcheck_log_ttl;
+      private \DateInterval $log_ttl;
 
       /**
        * The amount of matching attempts allowed for this log
@@ -68,15 +68,20 @@
       {
 
          // Set the class data
-         $this->floodcheck_log     = $floodcheck_log;
-         $this->floodcheck_log_ttl = $floodcheck_log_ttl;
-         $this->max_attempts       = $max_attempts;
+         $this->floodcheck_log = $floodcheck_log;
+         $this->log_ttl        = $floodcheck_log_ttl;
+         $this->max_attempts   = $max_attempts;
 
          // Set the service entity
          $this->floodcheck_service = $floodcheck_service;
 
          // Set the database mapper
          $this->database_mapper = $database_mapper;
+
+         // Calculate and set the expires date
+         $this->floodcheck_service->setFloodcheckLogExpirationDate( $this->floodcheck_log->getExpires(),
+                                                                    $this->log_ttl );
+
       }
 
 
@@ -89,13 +94,8 @@
       public function isFloodcheckExceeded (): bool
       {
 
-         // Get the cutoff date based on the log creation time
-         $cutoff = $this->floodcheck_service->getFloodcheckLogCutoffDate( $this->floodcheck_log->getCreated(),
-                                                                          $this->floodcheck_log_ttl );
-
          // Use the service to check
          return $this->database_mapper->isFloodcheckExceeded( $this->floodcheck_log,
-                                                              $cutoff,
                                                               $this->max_attempts );
       }
 
@@ -108,13 +108,8 @@
       public function saveFloodcheckLog (): void
       {
 
-         // Get the cutoff date based on the log creation time
-         $cutoff = $this->floodcheck_service->getFloodcheckLogCutoffDate( $this->floodcheck_log->getCreated(),
-                                                                          $this->floodcheck_log_ttl );
-
          // Use the database mapper to save this log and perform a check
          $this->database_mapper->saveFloodcheckLog( $this->floodcheck_log,
-                                                    $cutoff,
                                                     $this->max_attempts );
       }
 

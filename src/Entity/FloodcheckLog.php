@@ -14,11 +14,11 @@
    {
 
       /**
-       * The creation date of the log
+       * The expiration date of the log
        *
        * @var DateController
        */
-      private DateController $created;
+      private DateController $expires;
 
       /**
        * The general tag for the log
@@ -38,45 +38,45 @@
       /**
        * The class constructor
        *
-       * @param DateController $created    The creation date of the log
+       * @param DateController $expires    The expiration date of the log
        * @param string         $tag        The general tag for the log
        * @param string         $ip_address The IP address for the log
        */
-      public function __construct ( DateController $created,
+      public function __construct ( DateController $expires,
                                     string $tag,
                                     string $ip_address )
       {
 
          // Set the class data
-         $this->setCreated( $created );
+         $this->setExpires( $expires );
          $this->setTag( $tag );
          $this->setIPAddress( $ip_address );
       }
 
 
       /**
-       * Gets the creation date
+       * Gets the expiration date
        *
        * @return DateController
        */
-      public function getCreated (): DateController
+      public function getExpires (): DateController
       {
 
          // Return the DateController object
-         return $this->created;
+         return $this->expires;
       }
 
 
       /**
-       * Sets the creation date
+       * Sets the expiration date
        *
-       * @param DateController $date The DateController object to set for creation
+       * @param DateController $date The DateController object to set for expiration
        */
-      public function setCreated ( DateController $date ): void
+      public function setExpires ( DateController $date ): void
       {
 
-         // Set the created date
-         $this->created = $date;
+         // Set the expiration date
+         $this->expires = $date;
       }
 
 

@@ -43,7 +43,7 @@
          $floodcheck = FloodcheckPorter::getInstance()
                                        ->newFloodcheckController( $tag,
                                                                   3,
-                                                                  'PT1M' );
+                                                                  'PT15M' );
 
          // Check the type of object created
          $this->assertInstanceOf( FloodcheckController::class,
