@@ -16,9 +16,9 @@
   "type": "library",
   "version": "1.1.0",
   "require": {
-    "grayl/database-main": "^1",
-    "grayl/date": "^1",
-    "grayl/mixin-common": "^1",
+    "grayl/database-main": "^1.0",
+    "grayl/date": "^1.0",
+    "grayl/mixin-common": "^1.0",
     "php": "~7.4",
     "ext-openssl": "*"
   },
